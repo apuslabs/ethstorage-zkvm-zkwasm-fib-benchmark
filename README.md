@@ -40,29 +40,30 @@ Control Groups
 Control Groups
 1. `zkWasm` fib.rs -> fib.wasm -> zkWasm
 2. `zkWasm(cuda)` fib.rs -> fib.wasm -> zkWasm(cuda)  (❌due to cuda 12.3 not compatible)
-3. `risc0` fib.rs -> RiscV ELF -> risc0
-4. `risc0(cuda)` fib.rs -> RiscV ELF -> risc0(cuda) 
+3. `wasmi` fib.rs -> fib.wasm -> wasmi -> RiscV ELF -> risc0
+4. `risc0` fib.rs -> RiscV ELF -> risc0
+5. `risc0(cuda)` fib.rs -> RiscV ELF -> risc0(cuda) 
 
 ### N=100
-|         | zkWasm | risc0   | risc0(cuda) |
-| ------- | ------ | ------- | ----------- |
-| dryrun  | 8.79ms | ❌       | ❌           |
-| witness | 33ms   | 14.27ms | 14.27ms     |
-| prove   | 542s   | 6s      | 2s          |
+|         | zkWasm | wasmi | risc0   | risc0(cuda) |
+| ------- | ------ | ----- | ------- | ----------- |
+| dryrun  | 8.79ms | ❌     | ❌       | ❌           |
+| witness | 33ms   | 456ms | 14.27ms | 14.27ms     |
+| prove   | 542s   | 25m   | 6s      | 2s          |
 
 ### N=10000
-|         | zkWasm | zkVM  | risc0(cuda) |
-| ------- | ------ | ----- | ----------- |
-| dryrun  | 148ms  | ❌     | ❌           |
-| witness | 40s    | 0.54s | 0.54s       |
-| prove   | ❌      | 25m   | 2.4m        |
+|         | zkWasm | wasmi | zkVM  | risc0(cuda) |
+| ------- | ------ | ----- | ----- | ----------- |
+| dryrun  | 148ms  | ❌     | ❌     | ❌           |
+| witness | 40s    | 29s   | 0.54s | 0.54s       |
+| prove   | ❌      | ⏳     | 25m   | 2.4m        |
 
 ### N=100000
-|         | zkWasm | zkVM  | risc0(cuda) |
-| ------- | ------ | ----- | ----------- |
-| dryrun  | 11s    | ❌     | ❌           |
-| witness | 🪫      | 49.9s | 49.9s       |
-| prove   | ❌      | ⏳     | 235.1m      |
+|         | zkWasm | wasmi | zkVM  | risc0(cuda) |
+| ------- | ------ | ----- | ----- | ----------- |
+| dryrun  | 11s    | ❌     | ❌     | ❌           |
+| witness | 🪫      | 42m   | 49.9s | 49.9s       |
+| prove   | ❌      | ⏳     | ⏳     | 235.1m      |
 
 ## Explain
 
@@ -195,6 +196,8 @@ cd scripts
 ```
 
 **Open each shell, and you will find six commented commands. Execute each one for N=100, N=10000, and N=100000 to obtain the CPU/CUDA results.**
+
+*when update N=10000, you will need to update src/fib_zkgo.go:Ln17,Col22 and src/fib-wasm/src/lib.rs:Ln13,Col21*
 
 _If you encounter an error while running zkwasm, update the -k 22 argument to -k 24 and try again._
 

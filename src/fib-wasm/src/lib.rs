@@ -4,13 +4,13 @@ use num_bigint::BigUint;
 extern "C" {
     pub fn wasm_input(is_public: u32) -> u64;
     pub fn require(cond: bool);
-    pub fn wasm_dbg(val:u64);
 }
 
 #[wasm_bindgen]
 pub fn zkmain() {
     unsafe {
-        let input = wasm_input(1);
+        // let input = wasm_input(1);
+        let input = 100;
         let result = fibonacci(input as u32);
         let expected = wasm_input(1);
         require(expected as u64 == result[0]);
