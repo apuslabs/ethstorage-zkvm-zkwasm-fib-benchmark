@@ -16,7 +16,7 @@ start_time=$(date +%s)
 # 100
 cargo run --release -- --wasm $SCRIPT_DIR/../output/fib.wasm --public 3314859971:i64 --method $METHOD
 # 10000, you will need to update src/fib_zkgo.go:Ln17,Col22
-# cargo run --release -- --wasm $SCRIPT_DIR/../output/fib.wasm --public 1556111435:i64 --method $METHOD
+# cargo run --release -- --wasm $SCRIPT_DIR/../output/fib.wasm --public 1242044891:i64 --method $METHOD
 # 100000, you will need to update src/fib_zkgo.go:Ln17,Col22
 # cargo run --release -- --wasm $SCRIPT_DIR/../output/fib.wasm --public 873876091:i64 --method $METHOD
 
@@ -24,7 +24,7 @@ cargo run --release -- --wasm $SCRIPT_DIR/../output/fib.wasm --public 3314859971
 # 100
 # cargo run --release -F cuda -- --wasm $SCRIPT_DIR/../output/fib.wasm --public 3314859971:i64 --method $METHOD
 # 10000, you will need to update src/fib_zkgo.go:Ln17,Col22
-# cargo run --release -F cuda -- --wasm $SCRIPT_DIR/../output/fib.wasm --public 1556111435:i64 --method $METHOD
+# cargo run --release -F cuda -- --wasm $SCRIPT_DIR/../output/fib.wasm --public 1242044891:i64 --method $METHOD
 # 100000, you will need to update src/fib_zkgo.go:Ln17,Col22
 # cargo run --release -F cuda -- --wasm $SCRIPT_DIR/../output/fib.wasm --public 873876091:i64 --method $METHOD
 

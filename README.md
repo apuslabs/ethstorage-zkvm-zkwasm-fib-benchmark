@@ -55,7 +55,7 @@ Control Groups
 |         | zkWasm | wasmi | zkVM  | risc0(cuda) |
 | ------- | ------ | ----- | ----- | ----------- |
 | dryrun  | 148ms  | ❌     | ❌     | ❌           |
-| witness | 40s    | 29s   | 0.54s | 0.54s       |
+| witness | 25s    | 29s   | 0.54s | 0.54s       |
 | prove   | ❌      | ⏳     | 25m   | 2.4m        |
 
 ### N=100000
